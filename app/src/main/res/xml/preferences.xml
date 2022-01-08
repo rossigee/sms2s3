@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory android:title="@string/aws_credentials_preferences">
+
+        <EditTextPreference
+            android:key="aws_bucket_name"
+            android:title="@string/aws_bucket_name" />
+
+        <EditTextPreference
+            android:key="aws_bucket_region"
+            android:title="@string/aws_bucket_region" />
+
+        <EditTextPreference
+            android:key="aws_access_key_id"
+            android:title="@string/aws_access_key_id" />
+
+        <EditTextPreference
+            android:key="aws_secret_access_key"
+            android:title="@string/aws_secret_access_key" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
+
