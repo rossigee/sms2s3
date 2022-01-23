@@ -40,6 +40,7 @@ dependencies {
     implementation 'com.amazonaws:aws-android-sdk-core:2.37.1'
     implementation 'com.amazonaws:aws-android-sdk-s3:2.37.1'
     implementation 'androidx.preference:preference:1.1.0'
+    implementation 'androidx.work:work-runtime:2.7.1'
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

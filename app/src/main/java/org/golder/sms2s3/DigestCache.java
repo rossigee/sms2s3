@@ -2,18 +2,21 @@ package org.golder.sms2s3;
 
 import android.util.Log;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.*;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
 
 public class DigestCache {
     private static DigestCache instance;
     private static Object monitor = new Object();
     private static String filename = null;
     private Map<String, Object> cache = Collections.synchronizedMap(new HashMap<String, Object>());
+    private static int watermark = 0;
 
     private DigestCache() {
         clear();
@@ -73,5 +76,9 @@ public class DigestCache {
             out.write(line);
         }
         out.close();
+    }
+
+    public void setWatermark(int value) {
+        watermark = value;
     }
 }

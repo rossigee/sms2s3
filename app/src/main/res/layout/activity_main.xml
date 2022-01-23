@@ -16,17 +16,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/app_toolbar" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="332dp"
-        android:layout_height="610dp"
-        android:text="Hello World!"
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="324dp"
+        android:layout_height="499dp"
+        android:scrollbars="vertical"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.551"
+        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/progressBar"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:fillViewport="true"
+            android:text="Activity logs..."
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.5" />
+
+    </ScrollView>
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/app_toolbar"
