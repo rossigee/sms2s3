@@ -16,7 +16,7 @@ public class Statistics {
     private ProgressBar progress;
 
     private static Statistics instance;
-    private static Object monitor = new Object();
+    private static final Object monitor = new Object();
 
     public static Statistics getInstance() {
         if (instance == null) {

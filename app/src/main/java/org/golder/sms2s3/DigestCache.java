@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 public class DigestCache {
     private static DigestCache instance;
-    private static Object monitor = new Object();
+    private static final Object monitor = new Object();
     private static String filename = null;
     private Map<String, Object> cache = Collections.synchronizedMap(new HashMap<String, Object>());
     private static int watermark = 0;
@@ -23,7 +23,7 @@ public class DigestCache {
     }
 
     public void setFilename(String filename) {
-        this.filename = filename;
+        DigestCache.filename = filename;
     }
 
     public void add(String cacheKey) {
@@ -72,7 +72,7 @@ public class DigestCache {
         }
         FileOutputStream out = new FileOutputStream(filename);
         for (Map.Entry<String,Object> entry : cache.entrySet()) {
-            byte[] line = new String(entry.getKey() + "\n").getBytes(StandardCharsets.UTF_8);
+            byte[] line = (entry.getKey() + "\n").getBytes(StandardCharsets.UTF_8);
             out.write(line);
         }
         out.close();

@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         textView.setText("Starting main activity...\n");
 
         // Add app tool/menu bar (for settings and other actions)
-        Toolbar appToolbar = (Toolbar) findViewById(R.id.app_toolbar);
+        Toolbar appToolbar = findViewById(R.id.app_toolbar);
         setSupportActionBar(appToolbar);
 
         // Set widgets that Statistics can manage
@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private ServiceConnection connection = new ServiceConnection() {
+    private final ServiceConnection connection = new ServiceConnection() {
         public void onServiceConnected(ComponentName className, IBinder binder) {
             service = ((SmsUploadService.LocalBinder)binder).getService();
             Log.d("main", "Main activity connected to service");

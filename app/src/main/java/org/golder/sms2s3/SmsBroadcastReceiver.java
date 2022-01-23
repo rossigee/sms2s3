@@ -16,11 +16,11 @@ import android.widget.Toast;
 
 public class SmsBroadcastReceiver extends BroadcastReceiver {
     SmsUploadService service;
-    private boolean isBound = false;
+    private final boolean isBound = false;
 
     Context context;
 
-    private ServiceConnection connection = new ServiceConnection() {
+    private final ServiceConnection connection = new ServiceConnection() {
         public void onServiceConnected(ComponentName className, IBinder binder) {
             service = ((SmsUploadService.LocalBinder)binder).getService();
             Log.d("receiver", "Receiver connected to service");

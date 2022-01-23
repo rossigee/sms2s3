@@ -28,7 +28,7 @@ import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
 public class SmsStoreWorker extends Worker {
-    private DigestCache cache;
+    private final DigestCache cache;
 
     SmsUploadService service;
     private boolean isBound = false;
@@ -39,7 +39,7 @@ public class SmsStoreWorker extends Worker {
         cache = DigestCache.getInstance();
     }
 
-    private ServiceConnection connection = new ServiceConnection() {
+    private final ServiceConnection connection = new ServiceConnection() {
         public void onServiceConnected(ComponentName className, IBinder binder) {
             service = ((SmsUploadService.LocalBinder)binder).getService();
             Log.d("worker", "Worker connected to service");
