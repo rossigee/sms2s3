@@ -9,6 +9,10 @@
             android:title="@string/aws_bucket_name" />
 
         <EditTextPreference
+            android:key="aws_object_prefix"
+            android:title="@string/aws_object_prefix" />
+
+        <EditTextPreference
             android:key="aws_bucket_region"
             android:title="@string/aws_bucket_region" />
 

@@ -18,6 +18,7 @@ public class S3Uploader {
     public static AmazonS3Client s3 = null;
     public static String region;
     public static String bucketname;
+    public static String prefix;
 
     public static void upload(JSONObject msg, String objectname, SharedPreferences prefs) throws IllegalArgumentException, AlreadyExistsException {
         // Avoid doing credentials thing too often
@@ -36,7 +37,13 @@ public class S3Uploader {
 
             region = prefs.getString("aws_bucket_region", "");
             bucketname = prefs.getString("aws_bucket_name", "");
+            prefix = prefs.getString("aws_object_prefix", "");
             s3 = new AmazonS3Client(sessionCredentials, Region.getRegion(region));
+        }
+
+        // Apply prefix
+        if(prefix != "") {
+            objectname = prefix + "/" + objectname;
         }
 
         // Check whether we already have it
