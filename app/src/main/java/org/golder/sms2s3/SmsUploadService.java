@@ -55,7 +55,7 @@ public class SmsUploadService extends IntentService {
 
         refresh();
 
-        return START_STICKY;
+        return START_REDELIVER_INTENT;
     }
 
     public class LocalBinder extends Binder {
