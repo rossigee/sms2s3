@@ -10,10 +10,4 @@
     <string name="action_refresh">Refresh</string>
     <string name="action_clear_cache">Clear cache</string>
     <string name="action_quit">Quit</string>
-    <string name="main_activity_connected">Main activity connected</string>
-    <string name="main_activity_disconnected">Main activity disconnected</string>
-    <string name="worker_connected">Worker connected</string>
-    <string name="worker_disconnected">Worker disconnected</string>
-    <string name="receiver_disconnected">Receiver disconnected</string>
-    <string name="receiver_connected">Receiver connected</string>
 </resources>
