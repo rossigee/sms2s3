@@ -1,9 +1,10 @@
 package org.golder.sms2s3;
 
-import android.app.Activity;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Statistics {
     public int inboxCount = 0;
@@ -38,7 +39,7 @@ public class Statistics {
     public void setStatus(String status) {
         this.status = status;
         if(textView != null) {
-            new Activity().runOnUiThread(new Runnable() {
+            new AppCompatActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     textView.append(status);

@@ -100,7 +100,7 @@ public class SmsStoreWorker extends Worker {
             try {
                 sender = msg.getString("address");
             } catch (JSONException je) {
-                Log.w("worker", "Error fetching sender: " + je.toString());
+                Log.w("worker", "Error fetching sender: " + je);
             }
 
             //Log.d("worker", msg.toString());
@@ -118,13 +118,13 @@ public class SmsStoreWorker extends Worker {
                 objectname = bytesToHex(hash);
             }
             catch(JSONException je) {
-                Log.e("worker", "Could not determine attributes of message to use for hash: " + je.toString());
-                service.setStatus("Message attributes error from '" + sender + "': " + je.toString() + "\n");
+                Log.e("worker", "Could not determine attributes of message to use for hash: " + je);
+                service.setStatus("Message attributes error from '" + sender + "': " + je + "\n");
                 continue;
             }
             catch(NoSuchAlgorithmException nsae) {
                 Log.e("worker", nsae.toString());
-                service.setStatus("Hashing error from '" + sender + "': " + nsae.toString() + "\n");
+                service.setStatus("Hashing error from '" + sender + "': " + nsae + "\n");
                 continue;
             }
 
@@ -136,12 +136,12 @@ public class SmsStoreWorker extends Worker {
                     service.setStatus("Processed message from '" + sender + "'\n");
                     cache.add(objectname);
                 } catch (AlreadyExistsException aee) {
-                    Log.i("worker", "Already exists: " + aee.toString());
+                    Log.i("worker", "Already exists: " + aee);
                     service.setStatus("Message already uploaded from '" + sender + "'\n");
                     cache.add(objectname);
                 } catch (IllegalArgumentException iae) {
-                    Log.e("worker", "Illegal argument: " + iae.toString());
-                    service.setStatus("Error processing message from '" + sender + "': " + iae.toString() + "\n");
+                    Log.e("worker", "Illegal argument: " + iae);
+                    service.setStatus("Error processing message from '" + sender + "': " + iae + "\n");
                 }
             }
 
@@ -157,7 +157,7 @@ public class SmsStoreWorker extends Worker {
             cache.save();
         }
         catch(IOException ioe) {
-            Log.e("worker", "Unable to save cache: " + ioe.toString());
+            Log.e("worker", "Unable to save cache: " + ioe);
         }
 
         return Result.success();

@@ -21,11 +21,11 @@ import androidx.work.Operation;
 import androidx.work.WorkManager;
 
 public class SmsUploadService extends IntentService {
-    private Context context;
+    // private Context context;
 
     private final IBinder binder = new LocalBinder();
 
-    private SmsStoreWorker worker;
+    //private SmsStoreWorker worker;
     private DigestCache cache;
     private Statistics stats;
 
@@ -43,14 +43,14 @@ public class SmsUploadService extends IntentService {
     public int onStartCommand(Intent intent, int flags, int startId) {
         Toast.makeText(this, "service starting", Toast.LENGTH_SHORT).show();
 
-        String cachefilename = getCacheDir().getAbsolutePath() + File.separator + "cache";
-        cache.setFilename(cachefilename);
+        String cacheFilename = getCacheDir().getAbsolutePath() + File.separator + "cache";
+        cache.setFilename(cacheFilename);
         try {
             cache.load();
         }
         catch(IOException ioe) {
             Toast.makeText(this, "unable to load cache", Toast.LENGTH_SHORT).show();
-            Log.e("service", "Unable to save cache: " + ioe.toString());
+            Log.e("service", "Unable to save cache: " + ioe);
         }
 
         refresh();
@@ -62,12 +62,12 @@ public class SmsUploadService extends IntentService {
         SmsUploadService getService() {
             return SmsUploadService.this;
         }
-        void refresh() {
-            refresh();
-        }
-        void save() {
-            save_cache();
-        }
+//        void refresh() {
+//            refresh();
+//        }
+//        void save() {
+//            save_cache();
+//        }
     }
 
     @Override
@@ -76,7 +76,7 @@ public class SmsUploadService extends IntentService {
     }
 
     protected void onHandleIntent(Intent intent) {
-        Log.i("service", "Received intent: " + intent.toString());
+        Log.i("service", "Received intent: " + intent);
     }
 
     @Override
@@ -96,7 +96,7 @@ public class SmsUploadService extends IntentService {
         }
         catch(IOException ioe) {
             Toast.makeText(this, "unable to save cache", Toast.LENGTH_SHORT).show();
-            Log.e("service", "Unable to save cache: " + ioe.toString());
+            Log.e("service", "Unable to save cache: " + ioe);
         }
     }
 
@@ -104,19 +104,19 @@ public class SmsUploadService extends IntentService {
         // Process any messages already on phone
         Log.i("service", "Running SMS Store Worker...");
 
-        Constraints.Builder builder = new Constraints.Builder()
-                .setRequiredNetworkType(NetworkType.CONNECTED);
-        Data.Builder data = new Data.Builder();
-        OneTimeWorkRequest request =
-                new OneTimeWorkRequest.Builder(SmsStoreWorker.class)
-                        .addTag("refresh")
-                        .setInputData(data.build())
-                        .setConstraints(builder.build())
-                        .build();
+//        Constraints.Builder builder = new Constraints.Builder()
+//                .setRequiredNetworkType(NetworkType.CONNECTED);
+//        Data.Builder data = new Data.Builder();
+//        OneTimeWorkRequest request =
+//                new OneTimeWorkRequest.Builder(SmsStoreWorker.class)
+//                        .addTag("refresh")
+//                        .setInputData(data.build())
+//                        .setConstraints(builder.build())
+//                        .build();
 
-        Context context = getApplicationContext();
-        WorkManager manager = WorkManager.getInstance(context);
-        Operation op = manager.enqueue(request);
+//        Context context = getApplicationContext();
+//        WorkManager manager = WorkManager.getInstance(context);
+        //Operation op = manager.enqueue(request);
     }
 
     public void setStatus(String status) {
