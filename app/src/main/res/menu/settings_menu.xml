@@ -29,6 +29,4 @@
         android:orderInCategory="100"
         app:showAsAction="never"
         />
-
-    this.finishAffinity();
 </menu>

@@ -61,7 +61,7 @@ public class SmsBroadcastReceiver extends BroadcastReceiver {
                 messages[i] = SmsMessage.createFromPdu((byte[]) pdus[i], format);
                 msgFrom = messages[i].getOriginatingAddress();
                 Log.i("receiver", "Handling SMS from '" + msgFrom + "'");
-                Toast.makeText(context, "Handling SMS from '" + msgFrom + "'", 1000).show();
+                Toast.makeText(context, "Handling SMS from '" + msgFrom + "'", Toast.LENGTH_SHORT).show();
                 String msgBody = messages[i].getMessageBody();
                 Log.d("receiver", msgBody);
             }

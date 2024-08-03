@@ -10,4 +10,5 @@
     <string name="action_refresh">Refresh</string>
     <string name="action_clear_cache">Clear cache</string>
     <string name="action_quit">Quit</string>
+    <string name="activity_logs">Activity logs...</string>
 </resources>

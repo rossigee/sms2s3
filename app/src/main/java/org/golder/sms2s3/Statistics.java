@@ -15,7 +15,7 @@ public class Statistics {
     private TextView textView;
     private ProgressBar progress;
 
-    private static Statistics instance;
+    private Statistics instance;
     private static final Object monitor = new Object();
 
     public static Statistics getInstance() {

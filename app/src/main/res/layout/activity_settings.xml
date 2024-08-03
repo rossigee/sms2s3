@@ -5,6 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ScrollView
+        android:id="@+id/settings_container"
+        android:layout_width="409dp"
+        android:layout_height="673dp"
+        android:layout_marginStart="1dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/app_toolbar">
+
+    </ScrollView>
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/app_toolbar"
         android:layout_width="match_parent"
@@ -14,14 +24,5 @@
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-
-    <ScrollView
-        android:id="@+id/settings_container"
-        android:layout_width="409dp"
-        android:layout_height="673dp"
-        app:layout_constraintTop_toBottomOf="@+id/app_toolbar"
-        tools:layout_editor_absoluteX="1dp">
-
-    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

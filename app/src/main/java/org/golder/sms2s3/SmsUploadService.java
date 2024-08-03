@@ -21,11 +21,11 @@ import androidx.work.Operation;
 import androidx.work.WorkManager;
 
 public class SmsUploadService extends IntentService {
-    private Context context;
+    // private Context context;
 
     private final IBinder binder = new LocalBinder();
 
-    private SmsStoreWorker worker;
+    // private SmsStoreWorker worker;
     private DigestCache cache;
     private Statistics stats;
 
@@ -50,7 +50,7 @@ public class SmsUploadService extends IntentService {
         }
         catch(IOException ioe) {
             Toast.makeText(this, "unable to load cache", Toast.LENGTH_SHORT).show();
-            Log.e("service", "Unable to save cache: " + ioe.toString());
+            Log.e("service", "Unable to save cache: " + ioe);
         }
 
         refresh();
@@ -61,12 +61,6 @@ public class SmsUploadService extends IntentService {
     public class LocalBinder extends Binder {
         SmsUploadService getService() {
             return SmsUploadService.this;
-        }
-        void refresh() {
-            refresh();
-        }
-        void save() {
-            save_cache();
         }
     }
 
@@ -96,7 +90,7 @@ public class SmsUploadService extends IntentService {
         }
         catch(IOException ioe) {
             Toast.makeText(this, "unable to save cache", Toast.LENGTH_SHORT).show();
-            Log.e("service", "Unable to save cache: " + ioe.toString());
+            Log.e("service", "Unable to save cache: " + ioe);
         }
     }
 
@@ -116,7 +110,7 @@ public class SmsUploadService extends IntentService {
 
         Context context = getApplicationContext();
         WorkManager manager = WorkManager.getInstance(context);
-        Operation op = manager.enqueue(request);
+        manager.enqueue(request);
     }
 
     public void setStatus(String status) {
