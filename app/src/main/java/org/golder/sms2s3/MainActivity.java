@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Set widgets that Statistics can manage
         Statistics stats = Statistics.getInstance();
-        stats.setWidgets(scrollView, textView, progress);
+        stats.setWidgets(textView, progress);
 
         // Start service
         Intent intent = new Intent(this, SmsUploadService.class);

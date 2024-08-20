@@ -1,8 +1,8 @@
 package org.golder.sms2s3;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.widget.ProgressBar;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 public class Statistics {
@@ -11,11 +11,11 @@ public class Statistics {
 
     public String status;
 
-    private ScrollView scrollView;
     private TextView textView;
     private ProgressBar progress;
 
-    private Statistics instance;
+    @SuppressLint("StaticFieldLeak")
+    private static volatile Statistics instance;
     private static final Object monitor = new Object();
 
     public static Statistics getInstance() {
@@ -29,8 +29,7 @@ public class Statistics {
         return instance;
     }
 
-    public void setWidgets(ScrollView scrollView, TextView textView, ProgressBar progress) {
-        this.scrollView = scrollView;
+    public void setWidgets(TextView textView, ProgressBar progress) {
         this.textView = textView;
         this.progress = progress;
     }
@@ -38,12 +37,7 @@ public class Statistics {
     public void setStatus(String status) {
         this.status = status;
         if(textView != null) {
-            new Activity().runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    textView.append(status);
-                }
-            });
+            new Activity().runOnUiThread(() -> textView.append(status));
         }
     }
 
